@@ -1,0 +1,121 @@
+<div class="container mt-5">
+<form
+  class="mx-1 mx-md-4 mt-5"
+  ngNativeValidate
+  *ngIf="showForm"
+  #updateForm="ngForm"
+  (ngSubmit)="update(updateForm)"
+>
+<p class="text-center h3">Edit Your Profile Now !!</p>
+  <div class="form-outline flex-fill mb-0">
+    
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Firstname</mat-label>
+      <input
+        matInput
+        [(ngModel)]="user.userFirstName"
+        name="userFirstName"
+        id="userFirstName"
+        placeholder="Firstname"
+        required
+        #userFirstName="ngModel"
+        [class.is-invalid]="userFirstName.invalid && userFirstName.touched"
+      />
+    </mat-form-field>
+    <small
+      class="text-danger"
+      [class.d-none]="userFirstName.valid || userFirstName.untouched"
+      >User First Name is Required</small
+    >
+  </div>
+
+  <div class="form-outline flex-fill mb-0">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Lastname</mat-label>
+      <input
+        matInput
+        [(ngModel)]="user.userLastName"
+        name="userLastName"
+        id="userLastName"
+        placeholder="Lastname"
+        required
+        #userLastName="ngModel"
+        [class.is-invalid]="userLastName.invalid && userLastName.touched"
+      />
+    </mat-form-field>
+    <small
+      class="text-danger"
+      [class.d-none]="userLastName.valid || userLastName.untouched"
+      >User Last Name is Required</small
+    >
+  </div>
+
+  <div class="form-outline flex-fill mb-0">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        [(ngModel)]="user.email"
+        name="email"
+        id="email"
+        placeholder="Mail"
+        required
+        #email="ngModel"
+        [class.is-invalid]="email.invalid && email.touched"
+      />
+    </mat-form-field>
+    <small class="text-danger" [class.d-none]="email.valid || email.untouched"
+      >Mail is Required</small
+    >
+  </div>
+
+  <div class="form-outline flex-fill mb-0">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Mobile Number</mat-label>
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="user.mobile"
+        name="mobile"
+        id="mobile"
+        placeholder="Mobile"
+        required
+        #mobile="ngModel"
+        [class.is-invalid]="mobile.invalid && mobile.touched"
+      />
+    </mat-form-field>
+    <small class="text-danger" [class.d-none]="mobile.valid || mobile.untouched"
+      >Mobile Number is Required</small
+    >
+  </div>
+
+  <div class="form-outline flex-fill mb-0">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Address</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="user.address"
+        name="address"
+        id="address"
+        placeholder="Address"
+        required
+        #address="ngModel"
+        [class.is-invalid]="address.invalid && address.touched"
+      />
+    </mat-form-field>
+    <small
+      class="text-danger"
+      [class.d-none]="address.valid || address.untouched"
+      >Address is Required</small
+    >
+  </div>
+
+  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 text-center">
+    <button type="submit" mat-raised-button color="primary">Save changes</button
+    >&nbsp;
+    <button type="reset" mat-stroked-button color="warn">Clear</button>
+  </div>
+</form>
+</div>

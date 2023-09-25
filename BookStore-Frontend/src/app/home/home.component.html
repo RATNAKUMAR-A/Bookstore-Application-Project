@@ -1,0 +1,70 @@
+<div class="container mt-5" *ngIf="showTable">
+   <!-- <div class="search-hero">
+      <input type="text" name="search" [(ngModel)]="searchText" placeholder="search">
+   </div> -->
+   
+  
+   <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Search any book</mat-label>
+      <input matInput
+             #searchkeyword
+             (keyup)="searchByKeyword(searchkeyword.value)"
+             name="searchKey"
+             id="searchKey"
+             placeholder="Search by book name, author name...">
+      <!-- <mat-hint>Search any book</mat-hint> -->
+  </mat-form-field>
+  <div align="right" *ngIf="searchButton">
+   <label>Sort By Genre : &nbsp;</label>
+   <select [(ngModel)]="searchText" name="searchText">
+     <option selected  value="">All</option>
+     <option value="Fiction">Fiction</option>
+     <option value="Romance" >Romance</option>
+     <option value="Anime">Anime</option>
+     <option value="Comedy">Comedy</option>
+     <option value="Fantasy">Fantasy</option>
+     <option value="Horror">Horror</option>
+     <option value="Biography">Biography</option>
+     <option value="Self help">Self Help</option>
+     <option value="Religion & Spirituality">Religion & Spirituality</option>
+
+   </select>
+ </div>
+ <br>
+
+   <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10" *ngIf="searchButton">
+      <mat-grid-tile *ngFor="let p of productDetails | filter:searchText">
+         <div class="row p-5">
+            <div class="image-container">
+               <img class="home-page-product-image" [src]="p.productImages[0].url" alt="">
+            </div>
+            <div class="mt-3">
+               <p><b>{{p.bookName}}</b></p>
+            </div>
+            <div class="mt-2">
+               <p style="white-space: inherit; height: 40px; width: 288px; overflow: hidden; text-overflow: ellipsis;"> {{p.authorName}} </p>
+            </div>
+            <div class="mt-2">
+              <b>Rs. {{p.bookDiscountedPrice}}</b> &nbsp;  <b style="text-decoration: line-through;">{{p.bookActualPrice}}</b> &nbsp;   <sup><b style="color: red;">{{(((p.bookActualPrice-p.bookDiscountedPrice)/p.bookActualPrice)*100).toFixed(2)}} %Off</b></sup>
+            </div>
+            <div class="mt-2">
+               <button type="button" mat-raised-button color="warn" (click)="showProductDetails(p.productId)">View Details</button>
+            </div>
+         </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="text-center mt-5" style="padding-bottom: 100px;" *ngIf="showLoadButton">
+      <button type="button" mat-raised-button color="primary" (click)="loadMoreProduct()"> Load more</button>
+    </div>
+
+    <div class="mt-5" >
+         
+    </div>
+</div>
+<div *ngIf="!searchButton" class="container mt-5">
+   <div class="card text-center" style="padding:20px;">
+       <h1>Sorry :(</h1><h3> You Search is <b style="color: red;">not in our List !!</b></h3>
+      
+   </div>
+</div>

@@ -1,0 +1,52 @@
+<br>
+<br>
+<br>
+<section class="vh-80">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="../assets/1.jpg"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+           <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <div class="divider d-flex align-items-center my-4">
+            <h1 class="text-center fw-bold mx-3 mb-0">Log In</h1>
+          </div>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Username</mat-label>
+                <input matInput
+                       ngModel
+                       name="userName"
+                       id="userName"
+                       placeholder="Username" required #userName="ngModel" [class.is-invalid]="userName.invalid && userName.touched">
+            </mat-form-field>
+            <small class="text-danger" [class.d-none]="userName.valid || userName.untouched" >Username is Required</small>
+
+
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Password</mat-label>
+                <input type="password"
+                    matInput
+                       ngModel
+                       name="userPassword"
+                       id="userPassword"
+                       placeholder="Password"  required #userPassword="ngModel" [class.is-invalid]="userPassword.invalid && userPassword.touched">
+            </mat-form-field>
+            <small class="text-danger" [class.d-none]="userPassword.valid || userPassword.untouched" >Password is Required</small>
+
+            <div class="text-center">
+            <button class="w-40" type="submit" mat-raised-button color="primary">Login</button>&nbsp;
+            <button class="w-40" type="reset" mat-stroked-button color="warn">Clear</button>
+        </div>
+          </form>
+          <div class="text-center">
+            <br>
+            <h3 class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? Click Below </h3><br>
+            <button class="w-20" mat-raised-button type="button" (click)="registerUser()">Register Here</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>

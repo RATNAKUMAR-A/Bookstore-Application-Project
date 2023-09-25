@@ -1,0 +1,132 @@
+<div class="container mt-5">
+  <div class="card p-2">
+    <div class="row">
+      <div class="col-6">
+        <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Book Name</mat-label>
+            <input
+              matInput
+              placeholder="Book Name"
+              [(ngModel)]="product.bookName"
+              name="bookName"
+              required #bookName="ngModel" [class.is-invalid]="bookName.invalid && bookName.touched"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Author Name</mat-label>
+            <input
+              matInput
+              placeholder="Author Name"
+              [(ngModel)]="product.authorName"
+              name="authorName"
+              required #authorName="ngModel" [class.is-invalid]="authorName.invalid && authorName.touched"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Book Description</mat-label>
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+              placeholder="Book Description "
+              [(ngModel)]="product.bookDescription"
+              name="bookDescription"
+              required #bookDescription="ngModel" [class.is-invalid]="bookDescription.invalid && bookDescription.touched"
+            ></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Book Actual Price</mat-label>
+            <input
+              matInput
+              placeholder="Book Actual Price"
+              [(ngModel)]="product.bookActualPrice"
+              name="bookActualPrice"
+              required #bookActualPrice="ngModel" [class.is-invalid]="bookActualPrice.invalid && bookActualPrice.touched"
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Book Discounted Price</mat-label>
+            <input
+              matInput
+              placeholder="Book Discounted Price"
+              [(ngModel)]="product.bookDiscountedPrice"
+              name="bookDiscountedPrice"
+              required #bookDiscountedPrice="ngModel" [class.is-invalid]="bookDiscountedPrice.invalid && bookDiscountedPrice.touched"
+            />
+          </mat-form-field>
+
+          <div align="end">
+            <button
+              type="reset"
+              mat-stroked-button
+              color="primary"
+              style="margin-right: 3px"
+            >
+              Clear
+            </button>
+            <button
+              type="submit"
+              *ngIf="isNewProduct"
+              mat-stroked-button
+              color="primary"
+            >
+              Add Book
+            </button>
+            <button
+              type="submit"
+              *ngIf="!isNewProduct"
+              mat-stroked-button
+              color="primary"
+            >
+              Update Book
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-6">
+        <div>
+          <div class="dropzone" appDrag (files)="fileDropped($event)">
+            <div class="text-wrapper">
+              <div class="centered">
+                Drag and drop your file or
+                <a (click)="selectFile.click()" class="browse-button">browse</a>
+                a file
+              </div>
+            </div>
+          </div>
+          <input
+            multiple
+            type="file"
+            style="display: none"
+            #selectFile
+            value="select"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+        <div class="mt-5">
+          <div class="row">
+            <mat-grid-list cols="4" rowHeight="1:1">
+              <mat-grid-tile
+                *ngFor="let file of product.productImages; let i = index"
+              >
+                <div style="position: relative">
+                  <span class="btn-remove-image" (click)="removeImages(i)"
+                    >x</span
+                  >
+                  <img [src]="file.url" width="100px" height="100px" />
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

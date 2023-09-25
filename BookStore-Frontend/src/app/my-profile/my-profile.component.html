@@ -1,0 +1,43 @@
+<div class="container mt-5">
+<div *ngIf="showTable">
+  <div>
+  <p class="text-center h3">Here !! Your Profile :)</p>
+</div>
+<br>
+  <table class="table table-striped">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="user-profile-header" scope="col">First Name</th>
+        <td class="user-profile-header">{{ user. userFirstName }}</td>
+    </tr>
+    <tr>
+        <th class="user-profile-header">Last Name</th>
+        <td class="user-profile-header">{{ user.userLastName }}</td>
+    </tr>
+    <tr>
+        <th class="user-profile-header">Email</th>
+        <td class="user-profile-header">{{ user.email }}</td>
+    </tr>
+    <tr>
+        <th class="user-profile-header">Phone Number</th>
+        <td class="user-profile-header">{{ user.mobile }}</td>
+    </tr>
+    <tr>
+        <th class="user-profile-header">Address</th>
+        <td class="user-profile-header">{{ user.address }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<div class="text-center">
+  <br>
+  <h3 class="small fw-bold mt-2 pt-1 mb-0">If Your Details are Incorrect?? No Worries !! Click Below </h3><br>
+  <button class="w-20" mat-icon-button
+  color="primary" type="button" (click)="editUser()"> <mat-icon> edit </mat-icon>
+    Edit My Profile</button>
+
+</div>

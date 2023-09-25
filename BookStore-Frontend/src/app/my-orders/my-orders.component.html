@@ -1,0 +1,53 @@
+<div class="container mt-5" *ngIf="isOrder()">
+    <table mat-table
+           [dataSource]="myOrderDetails"
+           class="mat-elevation-z8">
+
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell
+                *matHeaderCellDef> Name </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.orderFullName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell
+                *matHeaderCellDef> Address </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.orderFullOrder}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Contact No.">
+            <th mat-header-cell
+                *matHeaderCellDef> Contact No. </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.orderContactNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Amount">
+            <th mat-header-cell
+                *matHeaderCellDef> Amount </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.orderAmount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell
+                *matHeaderCellDef> Status </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.orderStatus}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row
+            *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<div *ngIf="!isOrder()" class="container mt-5">
+    <div class="card text-center" style="padding:20px;">
+        <h1>Your Order is <b style="color: red;">Not yet Done !!</b></h1>
+        <a [routerLink]="''" *ngIf="!isOrder()"><button mat-button>Start Your Order Now</button></a>
+    </div>
+</div>
